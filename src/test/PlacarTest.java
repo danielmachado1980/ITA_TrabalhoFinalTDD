@@ -24,7 +24,8 @@ public class PlacarTest {
 		placar.registrar(usuario, tipoPonto);
 		tipoPonto = new TipoPontoEstrela(5);
 		usuario = new Usuario("daniel", tipoPonto);
-		assertEquals(10, 10);
+		placar.registrar(usuario, tipoPonto);
+		assertEquals(15, placar.retornarPontos(usuario));
 	}
 
 }

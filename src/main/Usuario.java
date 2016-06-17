@@ -12,6 +12,19 @@ public class Usuario {
 		this._tipoPonto.add(tipoPonto);
 	}
 
+	public String get_nome() {
+		return _nome;
+	}
 
+	public void set_nome(String _nome) {
+		this._nome = _nome;
+	}
 
+	public List<TipoPonto> get_tipoPonto() {
+		return _tipoPonto;
+	}
+
+	public void set_tipoPonto(List<TipoPonto> _tipoPonto) {
+		this._tipoPonto = _tipoPonto;
+	}
 }

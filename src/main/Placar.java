@@ -15,4 +15,13 @@ public class Placar {
 		this._armazenamento = armazenamento;
 	}
 
+	public long retornarPontos(Usuario usuario) {
+		long total = 0;
+		for(Usuario item : _lstUsuarios){
+			if item.get_nome() == usuario.get_nome(){
+					total += usuario.get_tipoPonto().
+			}
+		}
+	}
+
 }
