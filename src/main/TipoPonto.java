@@ -7,7 +7,7 @@ public abstract class TipoPonto {
 		this._pontos = pontos;
 	}
 
-	public long retornarPontos(){
-		return _pontos;
+	public long getPontos(){
+		return this._pontos;
 	}
 }

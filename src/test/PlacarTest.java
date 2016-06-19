@@ -14,18 +14,22 @@ import main.Usuario;
 
 public class PlacarTest {
 
-	@Test
-	public void registrarTeste() {
+	/*@Test
+	public void registrarPontoCurtidaTeste() {
+		Armazenamento armazenamento = new Armazenamento();
 		TipoPonto tipoPonto = new TipoPontoCurtida(10);
 		Usuario usuario = new Usuario("daniel", tipoPonto);
-		Placar placar = new Placar();
+		armazenamento.setUsuario(usuario);
+		Placar placar = new Placar(armazenamento);
+		assertEquals(10, placar.getArmazenamento().recuperarPorTipo(usuario, tipoPonto));
+	}*/
+	
+	/*@Test
+	public void registrarPontoEstrelaTeste() {
 		InterfaceArmazenamento armazenamento = new Armazenamento();
-		placar.adicionarArmazenamento(armazenamento);
-		placar.registrar(usuario, tipoPonto);
-		tipoPonto = new TipoPontoEstrela(5);
-		usuario = new Usuario("daniel", tipoPonto);
-		placar.registrar(usuario, tipoPonto);
-		assertEquals(15, placar.retornarPontos(usuario));
-	}
-
+		TipoPonto tipoPonto = new TipoPontoEstrela(5);
+		Usuario usuario = new Usuario("daniel", tipoPonto);
+		Placar placar = new Placar(usuario, armazenamento);
+		assertEquals(5, placar.getArmazenamento().recuperar());
+	}*/
 }
