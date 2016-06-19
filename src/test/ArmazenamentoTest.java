@@ -1,20 +1,42 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import org.junit.Before;
 import org.junit.Test;
 
-import main.Armazenamento;
-import main.Placar;
-import main.TipoPonto;
-import main.TipoPontoCurtida;
-import main.TipoPontoEstrela;
-import main.Usuario;
+import br.ita.projetofinal.abstracts.TipoPonto;
+import br.ita.projetofinal.main.Armazenamento;
+import br.ita.projetofinal.main.TipoPontoCurtida;
+import br.ita.projetofinal.main.TipoPontoEstrela;
+import br.ita.projetofinal.main.Usuario;
 
 public class ArmazenamentoTest {
+	
+	@Before
+	public void inicializarTeste() throws IOException{
+		File file = null;
+		FileWriter arq = null;
+		try {
+			file = new File(new File(".").getCanonicalPath() + "\\resources\\placar.txt");
+			if ( file.exists()) {
+			   file.delete();
+			   
+				arq = new FileWriter(new File(".").getCanonicalPath() + "\\resources\\placar.txt");
+				arq.close();
+			}
+		} catch (IOException e) {
+			throw e;
+		}
+	}
 
 	@Test
-	public void armazenarTeste() {
+	public void armazenarTeste() throws Exception {
 		TipoPonto tipoPonto = new TipoPontoCurtida(10);
 		Usuario usuario = new Usuario("daniel", tipoPonto);
 		Armazenamento armazenamento = new Armazenamento(usuario);
@@ -26,9 +48,9 @@ public class ArmazenamentoTest {
 		armazenamento.armazenar();
 		assertTrue(armazenamento.recuperar(usuario).contains("TipoPontoEstrela:10"));
 	}
-	/*
+	
 	@Test
-	public void recuperarPorTipoTeste() {
+	public void recuperarPorTipoPontoParaUsuarioTeste() throws Exception {
 		TipoPonto tipoPonto = new TipoPontoCurtida(10);
 		Usuario usuario = new Usuario("daniel", tipoPonto);
 		Armazenamento armazenamento = new Armazenamento(usuario);
@@ -37,7 +59,35 @@ public class ArmazenamentoTest {
 	}
 	
 	@Test
-	public void recuperarTodosTiposPontoTeste() {
+	public void retornarTodosUsuariosComAlgumTipoPontoTeste() throws Exception {
+		TipoPonto tipoPonto = new TipoPontoCurtida(10);
+		Usuario usuario = new Usuario("daniel", tipoPonto);
+		Armazenamento armazenamento = new Armazenamento(usuario);
+		armazenamento.armazenar();
+		tipoPonto = new TipoPontoEstrela(20);
+		usuario = new Usuario("roberto", tipoPonto);
+		armazenamento = new Armazenamento(usuario);
+		armazenamento.armazenar();
+		assertTrue(armazenamento.retornarTodosUsuariosComAlgumTipoPontos().contains("->roberto"));
+		assertTrue(armazenamento.retornarTodosUsuariosComAlgumTipoPontos().contains("->daniel"));
+	}
+	
+	@Test
+	public void armazenarNegativoTeste() throws Exception {
+		TipoPonto tipoPonto = new TipoPontoCurtida(10);
+		Usuario usuario = new Usuario("daniel", tipoPonto);
+		Armazenamento armazenamento = new Armazenamento(usuario);
+		armazenamento.armazenar();
+		assertTrue(armazenamento.recuperar(usuario).contains("TipoPontoCurtida:10"));
+		tipoPonto = new TipoPontoCurtida(-2);
+		usuario = new Usuario("daniel", tipoPonto);
+		armazenamento = new Armazenamento(usuario);
+		armazenamento.armazenar();
+		assertTrue(armazenamento.recuperar(usuario).contains("TipoPontoCurtida:8"));
+	}
+	
+	@Test
+	public void retornarTodosTipoPontoParaUsuarioTeste() throws Exception {
 		TipoPonto tipoPonto = new TipoPontoCurtida(10);
 		Usuario usuario = new Usuario("daniel", tipoPonto);
 		Armazenamento armazenamento = new Armazenamento(usuario);
@@ -46,7 +96,7 @@ public class ArmazenamentoTest {
 		usuario = new Usuario("daniel", tipoPonto);
 		armazenamento = new Armazenamento(usuario);
 		armazenamento.armazenar();
-		assertEquals("TipoPontoCurtida:10", armazenamento.retornarTodosUsuariosComPontos());
-	}*/
-
+		assertTrue(armazenamento.retornarTodosTipoPontoParaUsuario(usuario).contains("TipoPontoCurtida:10"));
+		assertTrue(armazenamento.retornarTodosTipoPontoParaUsuario(usuario).contains("TipoPontoEstrela:20"));
+	}
 }

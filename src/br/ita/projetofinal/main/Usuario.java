@@ -1,7 +1,9 @@
-package main;
+package br.ita.projetofinal.main;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.ita.projetofinal.abstracts.TipoPonto;
 
 public class Usuario {
 	

@@ -1,4 +1,6 @@
-package main;
+package br.ita.projetofinal.main;
+
+import br.ita.projetofinal.abstracts.TipoPonto;
 
 public class TipoPontoEstrela extends TipoPonto {
 	

@@ -1,3 +1,0 @@
-->daniel
-TipoPontoCurtida:10
-TipoPontoEstrela:0

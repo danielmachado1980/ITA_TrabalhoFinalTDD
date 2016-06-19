@@ -4,13 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import main.Armazenamento;
-import main.InterfaceArmazenamento;
-import main.Placar;
-import main.TipoPonto;
-import main.TipoPontoCurtida;
-import main.TipoPontoEstrela;
-import main.Usuario;
+import br.ita.projetofinal.abstracts.TipoPonto;
+import br.ita.projetofinal.interfaces.InterfaceArmazenamento;
+import br.ita.projetofinal.main.Armazenamento;
+import br.ita.projetofinal.main.Placar;
+import br.ita.projetofinal.main.TipoPontoCurtida;
+import br.ita.projetofinal.main.TipoPontoEstrela;
+import br.ita.projetofinal.main.Usuario;
 
 public class PlacarTest {
 

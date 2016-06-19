@@ -1,4 +1,4 @@
-package main;
+package br.ita.projetofinal.abstracts;
 
 public abstract class TipoPonto {
 	private long _pontos;
