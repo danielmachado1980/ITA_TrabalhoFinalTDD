@@ -91,17 +91,16 @@ public class Armazenamento implements InterfaceArmazenamento{
 					return retornarPontos(lerArq, linha);
 				linha = lerArq.readLine();
 			}
-			
-				arq.close();
-			} catch (IOException e) {
-				throw e;
-			}
-			return lista;
+			arq.close();
+		} catch (IOException e) {
+			throw e;
+		}
+		return lista;
 	}
 
 	private void atualizar(List<String> lista, List<String> listaOutros, PrintWriter gravarArq) {
 		long valorAntigo = 0;
-		if(listaOutros!=null)
+		if(listaOutros.size()>0)
 			for(String item : listaOutros)
 				gravarArq.printf(item+"%n");
 		if(lista==null){
@@ -146,16 +145,17 @@ public class Armazenamento implements InterfaceArmazenamento{
 	
 	private List<String> retornarOutrosUsuario(Usuario usuario) throws IOException{
 		try { 
+			List<String> lista = new ArrayList<String>();
 			FileReader arq = abriArquivo(); 
 			BufferedReader lerArq = new BufferedReader(arq); 
 			String linha  = lerArq.readLine();
 			while(linha != null){
 				if(!linha.substring(2).equals(usuario.getNome()) && linha.substring(0,2).equals("->"))
-					return retornarPontos(lerArq, linha);
+					lista.addAll(retornarPontos(lerArq, linha));
 				linha = lerArq.readLine();
 			}
 			arq.close(); 
-			return null;
+			return lista;
 		} 
 		catch (IOException e) { 
 			throw e;
@@ -176,10 +176,12 @@ public class Armazenamento implements InterfaceArmazenamento{
 		try {
 			lista.add(nomeUsuario);
 			String linha = lerArq.readLine();
-			while(linha != null){
+			while(linha != null && !linha.substring(0,2).equals("->")){
 				lista.add(linha);
+				lerArq.mark(50);
 				linha = lerArq.readLine();
 			}
+			lerArq.reset();
 			return lista;
 		} catch (IOException e) {
 			throw e;

@@ -6,11 +6,12 @@ public class TipoPontoEstrela extends TipoPonto {
 	
 	@Override
 	public String toString() {
-		return "TipoPontoEstrela";
+		return "Estrela";
 	}
 	
 	public TipoPontoEstrela(long pontos) {
 		super(pontos);
 	}
-
+	
+	
 }

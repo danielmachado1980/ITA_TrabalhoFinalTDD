@@ -2,14 +2,14 @@ package br.ita.projetofinal.main;
 
 import br.ita.projetofinal.abstracts.TipoPonto;
 
-public class TipoPontoCurtida extends TipoPonto implements Cloneable{
+public class TipoPontoMoeda extends TipoPonto {
 
 	@Override
 	public String toString() {
-		return "Curtida";
+		return "Moeda";
 	}
-
-	public TipoPontoCurtida(long pontos) {
+	
+	public TipoPontoMoeda(long pontos) {
 		super(pontos);
 	}
 }
